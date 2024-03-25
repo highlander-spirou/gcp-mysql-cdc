@@ -1,0 +1,67 @@
+[
+    {
+        "name": "id",
+        "type": "INT64",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "flight_date",
+        "type": "DATE",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "flight_number",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "flight_class",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "distance",
+        "type": "FLOAT64",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "origin",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "destination",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "flow_card",
+        "type": "BOOLEAN",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "bag_checked",
+        "type": "INT64",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "meal_type",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "change_type",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "read_timestamp",
+        "type": "TIMESTAMP",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "source_timestamp",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+    }
+]
