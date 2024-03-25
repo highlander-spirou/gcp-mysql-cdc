@@ -75,19 +75,6 @@ resource "google_storage_bucket" "my_datastream_data" {
 }
 
 
-# ## Create a GCS permissions
-# resource "google_storage_bucket_iam_member" "pubsub_permissions" {
-#   bucket = google_storage_bucket.my_datastream_data.name
-#   role   = "roles/storage.legacyBucketReader"
-#   member = "serviceAccount:service-1079038750874@gcp-sa-pubsub.iam.gserviceaccount.com"
-# }
-
-# resource "google_storage_bucket_iam_member" "object_creator_permissions" {
-#   bucket = google_storage_bucket.my_datastream_data.name
-#   role   = "roles/storage.objectCreator"
-#   member = "serviceAccount:service-1079038750874@gcp-sa-pubsub.iam.gserviceaccount.com"
-# }
-
 
 # Step 3: Create a Datastream connector for GCS bucket
 resource "google_datastream_connection_profile" "gcs_connector" {
@@ -144,30 +131,7 @@ resource "google_datastream_stream" "datastream_instance" {
 }
 
 
-# # Step 6: Create a Pub/Sub service:
-# resource "google_pubsub_topic" "my_datastream_topic" {
-#   name       = "datastream-topic"
-#   depends_on = [google_storage_bucket.my_datastream_data]
-# }
-
-# resource "google_pubsub_subscription" "datastream_data_sub" {
-#   name  = "datastream-sub"
-#   topic = google_pubsub_topic.my_datastream_topic.name
-
-#   # Configure delivery to Cloud Storage
-#   cloud_storage_config {
-#     bucket = google_storage_bucket.my_datastream_data.name
-#     avro_config {
-#       write_metadata = true
-#     }
-#   }
-#   depends_on = [google_pubsub_topic.my_datastream_topic,
-#     google_storage_bucket_iam_member.object_creator_permissions,
-#   google_storage_bucket_iam_member.pubsub_permissions]
-# }
-
-
-# Step 7: Create cloud function subscribe to the pubsub
+# Step 6: Create cloud function subscribe to the pubsub
 resource "google_storage_bucket" "my_function_bucket" {
   name     = "steve-dracugonla-function-bucket"
   location = local.location
@@ -219,7 +183,7 @@ resource "google_cloudfunctions2_function" "default" {
 
 }
 
-# Step 8: Create BigQuery data warehouse
+# Step 7: Create BigQuery data warehouse
 resource "google_bigquery_dataset" "airline" {
   dataset_id = "airline"
 }
